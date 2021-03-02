@@ -4,12 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.DialogFragment;
 import me.dm7.barcodescanner.zbar.BarcodeFormat;
-import me.dm7.barcodescanner.zbar.ZBarScannerView;
 
 public class FormatSelectorDialogFragment extends DialogFragment {
     public interface FormatSelectorDialogListener {
