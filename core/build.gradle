@@ -1,13 +1,42 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
-ext {
-    isLibrary = true
-    pomPackaging = "aar"
-    pomArtifactId = "core"
-    pomName = "Barcode Scanner View"
-    pomDescription = 'An android library project which contains the core barcode scanner view'
+android {
+    namespace 'me.dm7.barcodescanner.core'
+    compileSdkVersion 35
+
+    defaultConfig {
+        minSdk 26
+        targetSdkVersion 35
+        versionCode 1913
+        versionName "1.9.13"
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            mavenRelease(MavenPublication) {
+                from components.release
+
+                groupId = 'me.dm7.barcodescanner'
+                artifactId = 'core'
+                version = '1.9.13'
+            }
+        }
+    }
 }
 
 dependencies {
-    implementation libraries.annotation
+    implementation 'androidx.annotation:annotation:1.9.1'
 }
